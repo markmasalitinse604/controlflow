@@ -157,3 +157,9 @@ fun workingWithTemplates() {
     println("First word: ${course.substringBefore(" ")}")
     println("Maths inside: 2 + 3 = ${2 + 3}")
 }
+
+fun nullSafety() {
+    var nickname: String? = "Marko"
+    val length = nickname?.length ?: 0
+    nickname = null
+}
