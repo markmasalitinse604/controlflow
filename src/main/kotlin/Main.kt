@@ -15,6 +15,8 @@ fun main(){
     forEachStandard()
     forEachIndices()
     forEachWithIndex()
+    whileWithList()
+    doWhileCountdown()
 }
 
 //if as an expression with blocks: the last line of each branch is the result
@@ -95,4 +97,23 @@ fun forEachWithIndex() {
     for ((index, city) in cities.withIndex()) {
         println("" + index + " -> " + city)
     }
+}
+
+fun whileWithList() {
+    val cities = listOf("Dublin", "Cork", "Waterford")
+    var index = 0
+    while (index < cities.size) {
+        println("While loop, city " + index + ": " + cities[index])
+        index++
+    }
+}
+
+//do-while always runs the body at least once
+fun doWhileCountdown() {
+    var count = 3
+    do {
+        println("Countdown: " + count)
+        count--
+    } while (count > 0)
+    println("Lift off!")
 }
