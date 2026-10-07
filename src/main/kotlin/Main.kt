@@ -17,6 +17,7 @@ fun main(){
     forEachWithIndex()
     whileWithList()
     doWhileCountdown()
+    workingWithStrings()
 }
 
 //if as an expression with blocks: the last line of each branch is the result
@@ -116,4 +117,28 @@ fun doWhileCountdown() {
         count--
     } while (count > 0)
     println("Lift off!")
+}
+
+fun workingWithStrings() {
+    //escaped string: \n new line, \t tab
+    val escaped = "Line one\nLine two\tafter a tab\n"
+    print(escaped)
+
+    //raw string + trimIndent: removes the common indent
+    val poem = """
+        Roses are red,
+        Kotlin is neat,
+        Raw strings keep
+        line breaks complete.
+    """.trimIndent()
+    println(poem)
+
+    //raw string + trimMargin: removes everything up to |
+    val menu = """
+        |1. Start
+        |2. Settings
+        |   (indent after the margin is kept)
+        |0. Exit
+    """.trimMargin()
+    println(menu)
 }
