@@ -12,6 +12,9 @@ fun main(){
     println(describeAnything(2.5))
     println(describeAnything(42))
     println(describeAnything("Kotlin"))
+    forEachStandard()
+    forEachIndices()
+    forEachWithIndex()
 }
 
 //if as an expression with blocks: the last line of each branch is the result
@@ -71,4 +74,25 @@ fun describeAnything(obj: Any) = when (obj) {
     is Double -> "A Double value"
     !is String -> "Not a String"
     else -> "Some String"
+}
+
+fun forEachStandard() {
+    val cities = listOf("Dublin", "Cork", "Waterford")
+    for (city in cities) {
+        println("City: " + city)
+    }
+}
+
+fun forEachIndices() {
+    val cities = listOf("Dublin", "Cork", "Waterford")
+    for (index in cities.indices) {
+        println("City at " + index + " is " + cities[index])
+    }
+}
+
+fun forEachWithIndex() {
+    val cities = listOf("Dublin", "Cork", "Waterford")
+    for ((index, city) in cities.withIndex()) {
+        println("" + index + " -> " + city)
+    }
 }
