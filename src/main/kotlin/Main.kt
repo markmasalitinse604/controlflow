@@ -18,6 +18,7 @@ fun main(){
     whileWithList()
     doWhileCountdown()
     workingWithStrings()
+    workingWithTemplates()
 }
 
 //if as an expression with blocks: the last line of each branch is the result
@@ -38,7 +39,7 @@ fun describeNumber(value: Int) = when (value) {
     1 -> "One"
     in 2..4 -> "Small number (2-4)"
     10, 20, 30 -> "A round number: 10, 20 or 30"
-    else -> "Some other number: " + value
+    else -> "Some other number: $value"
 }
 
 fun checkRange(value: Int) {
@@ -82,21 +83,21 @@ fun describeAnything(obj: Any) = when (obj) {
 fun forEachStandard() {
     val cities = listOf("Dublin", "Cork", "Waterford")
     for (city in cities) {
-        println("City: " + city)
+        println("City: $city")
     }
 }
 
 fun forEachIndices() {
     val cities = listOf("Dublin", "Cork", "Waterford")
     for (index in cities.indices) {
-        println("City at " + index + " is " + cities[index])
+        println("City at $index is ${cities[index]}")
     }
 }
 
 fun forEachWithIndex() {
     val cities = listOf("Dublin", "Cork", "Waterford")
     for ((index, city) in cities.withIndex()) {
-        println("" + index + " -> " + city)
+        println("$index -> $city")
     }
 }
 
@@ -104,7 +105,7 @@ fun whileWithList() {
     val cities = listOf("Dublin", "Cork", "Waterford")
     var index = 0
     while (index < cities.size) {
-        println("While loop, city " + index + ": " + cities[index])
+        println("While loop, city $index: ${cities[index]}")
         index++
     }
 }
@@ -113,7 +114,7 @@ fun whileWithList() {
 fun doWhileCountdown() {
     var count = 3
     do {
-        println("Countdown: " + count)
+        println("Countdown: $count")
         count--
     } while (count > 0)
     println("Lift off!")
@@ -141,4 +142,18 @@ fun workingWithStrings() {
         |0. Exit
     """.trimMargin()
     println(menu)
+}
+
+fun workingWithTemplates() {
+    val course = "Software Development Tools"
+    val language = "Kotlin"
+
+    //simple names
+    println("Simple names: $language in $course")
+
+    //expressions in {}
+    println("Upper case: ${language.uppercase()}")
+    println("Length of course name: ${course.length}")
+    println("First word: ${course.substringBefore(" ")}")
+    println("Maths inside: 2 + 3 = ${2 + 3}")
 }
