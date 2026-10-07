@@ -1,5 +1,5 @@
-fun main(){
-    println("The larger number is: " + largerOf(15, 9))
+fun main() {
+    println("The larger number is: ${largerOf(15, 9)}")
     println(describeNumber(3))
     println(describeNumber(20))
     checkRange(42)
@@ -19,6 +19,8 @@ fun main(){
     doWhileCountdown()
     workingWithStrings()
     workingWithTemplates()
+    nullSafety("Marko")
+    nullSafety(null)
 }
 
 //if as an expression with blocks: the last line of each branch is the result
@@ -158,8 +160,21 @@ fun workingWithTemplates() {
     println("Maths inside: 2 + 3 = ${2 + 3}")
 }
 
-fun nullSafety() {
-    var nickname: String? = "Marko"
-    val length = nickname?.length ?: 0
-    nickname = null
+
+fun nullSafety(nickname: String?) {
+    //1. explicit if check (smart cast to String inside)
+    if (nickname != null) {
+        println("Length (if check): ${nickname.length}")
+    } else {
+        println("Length (if check): no nickname")
+    }
+
+    //2. safe call: null instead of a crash
+    println("Length (?.): ${nickname?.length}")
+
+    //3. Elvis operator: default value when null
+    println("Length (?:): ${nickname?.length ?: 0}")
+
+    //4. nickname!!.length would throw NullPointerException when null,
+    //   so !! is only for values you are 100% sure about
 }
